@@ -1,0 +1,512 @@
+\documentclass[a4paper,12pt,oneside]{report}
+%\usepackage[Glenn]{fncychap}
+\usepackage[Lenny]{fncychap}
+% Escrever em Português
+%\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+
+
+%%% Escolha das fontes
+% Charter
+%\usepackage[charter]{mathdesign}
+
+%%% Combo: Palatino + Helvetica + Courier, com EulerVM para matemática
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{courier}
+\linespread{1.05} %%% Palatino needs more spacing.
+
+%%% Idem, mas pxfonts para matemática
+%\usepackage{pxfonts}
+%\usepackage[scaled=.95]{helvet}
+%\usepackage{courier}
+%\linespread{1.05} %%% Palatino needs more spacing.
+
+% Outras fontes
+%\usepackage{bookman} % Obsoleto, usar Kerkis
+%\usepackage{kmath,kerkis}
+%\usepackage[urw-garamond]{mathdesign}
+%\usepackage[utopia]{mathdesign}
+%\usepackage{mathptmx} % Isso se eu quisesse usar com Times!
+%\usepackage{mathrsfs}
+%\usepackage{eulervm} % Euler iria bem, mas não nesta tese...
+%\usepackage{libertine} % Fonte da Wikipedia!
+
+%
+% Geometria da página. Sugiro manter estas mesmas margens e 15 cm de espaço de texto.
+\usepackage[a4paper,pdftex,top=2.8cm,bottom=4cm,left=3.4cm,right=2.6cm]{geometry}
+\textwidth=15.0 true cm
+
+%
+% Table of Contents
+\setcounter{tocdepth}{2}
+
+\usepackage{sprace}
+\usepackage[]{units}
+%
+% Use isto pros headers
+
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+
+% % tenemos que apagar dedsde aqui para cambiar el formato de capitulo  
+
+%\renewcommand{\chaptermark}[1]{%
+%\markboth{\chaptername\ \thechapter.\ #1}{}}
+
+%% E menos espaço ao começar o capítulo
+%\usepackage{titlesec}
+%\titleformat{\chapter}[display]
+%  {\normalfont\rmfamily\huge\mdseries}
+%  {\chaptertitlename\ \thechapter}{20pt}{\huge}
+%\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% %  hasta aqui
+
+
+% Linha Extra
+\newcommand{\linha}{\enlargethispage{1\baselineskip}}
+
+% Páginas bonitas
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\textit \thepage} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+\fancypagestyle{fancyplain}{%
+\fancyhf{}
+\fancyhead[L]{\textit{\leftmark}}
+\fancyhead[R]{\textit{\thepage}}
+%\fancyfoot[C]{\today} % Use este fancyfoot pros drafts (data no pé da página)!
+\fancyfoot[C]{} % Use este fancyfoot (vazio) pra versão final!
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+%%%%%%%
+% Do the hypersetup
+%%%%%%%
+
+\hypersetup{pdftitle={Search for a Heavy Resonance in the MET + Jet Final state},
+            pdfauthor={David Romero Abad},
+            pdfsubject={High Energy Physics},
+            pdfkeywords={High Energy Physics}
+            			{Particle Physics}
+            			{Hadron Colliders} 
+				{Extra Dimensions}
+				{Beyond the Standard Model},
+			colorlinks=true,
+			citecolor=blue,
+			linkcolor=blue			
+            }
+
+\begin{document}
+
+%%% This makes all the frontmatter stuff, sans the Table of Contents.
+\pagestyle{plain}
+
+%\input Preambulo.tex
+\input TitlePage.tex
+
+\input blanco.tex
+
+\pagenumbering{roman}
+
+\input abstract.tex
+
+\input blanco2.tex
+
+%%% The Table of Contents and a new page
+\tableofcontents
+\newpage
+
+%%%
+%%% Ok, ready to start. Reset headings and page numbers.
+%%%
+
+\pagenumbering{arabic}
+
+
+
+\input Introduction.tex
+
+
+\input cap1.tex
+
+
+\input CMS.tex
+
+
+\input PhysicsObjects.tex
+\input Analysis.tex
+\input Conclusions.tex
+%\input DataED.tex
+%\input Conclusao.tex
+
+%\input cap2.tex
+%\input cap3.tex
+\appendix
+%%% Truque
+\renewcommand{\chaptername}%
+    {Apêndice}
+%\input analise_Zjets.tex
+%\input ap1.tex
+%\input ap2.tex
+%\input ap3.tex
+%\bibliography{mibiblio}{}
+%\bibliographystyle{unsrtnat}
+
+\begin{thebibliography}{9}
+
+\bibitem{higgsdisco}
+CMS Collaboration,
+"Observation of a new boson at a mass of 125 GeV with the CMS experiment at the LHC", 
+Physics Letters B, Volume 716, Issue 1, 17 September 2012, Pages 30–61.
+
+\bibitem{Randall:1999ee}
+Lisa Randall and Raman Sundrum,
+"Large Mass Hierarchy from a Small Extra Dimension",
+Phys.Rev.Lett. 83.3370 (1999),
+\eprint{hep-ph/9905221}.
+
+\bibitem{Randall:1999vf}
+Lisa Randall and Raman Sundrum,
+An Alternative to Compactification"
+Phys. Rev. Lett.83.4690,
+\eprint{hep-th/9906064}.
+
+\bibitem{Aga}
+Kaustubh Agashe and Hooman Davoudiasl and Gilad Perez and Amarjit Soni,
+"Warped Gravitons at the LHC and Beyond",
+Phys. Rev. D 76.036006,
+\eprint{hep-ph/0701186}.
+
+\bibitem{Fitz}
+A. L. Fitzpatrick, J. Kaplan, L. Randall, and L.T. Wang,
+"Searching for the Kaluza-Klein Graviton in Bulk RS Models",
+JHEP 0709 (2007) 013,
+\eprint{hep-ph/0701150}.
+
+\bibitem{HVT}
+D. Pappadopulo, A. Thamm, R. Torre, and A. Wulzer, "Heavy Vector Triplets: Bridging Theory and Data", (2014),
+\eprint{1402.4431}.
+
+\bibitem{glashow}
+S. Glashow,
+"Partial-symmetries of weak interactions",
+Nucl. Phys. 22 (1961) 579.
+
+\bibitem{weinberg}
+S. Weinberg,
+"A Model of Leptons",
+Phys. Rev. Lett. 19 (1967) 1264.
+
+\bibitem{salam}
+A. Salam,
+N. Svartholm, ed. Elementary Particle Physics: Relativistic Groups and Analyticity. Eighth Nobel Symposium. Stockholm: Almquvist and Wiksell. p. 367.
+
+\bibitem{higgs}
+Peter W. Higgs,
+"Spontaneous Symmetry Breakdown without Massless Bosons",
+Phys. Rev. 145, 1156  (1966).
+
+\bibitem{goldstone1}
+Jeffrey Goldstone, Abdus Salam, and Steven Weinberg,
+"Broken Symmetries",
+Phys. Rev. 127, 965 (1962).
+
+\bibitem{nambu}
+Yoichiro Nambu,
+"Axial Vector Current Conservation in Weak Interactions",
+Phys. Rev. Lett. 4, 380 (1960).
+
+\bibitem{gold2}
+J. Goldstone,
+"Field Theories with Superconductor Solutions",
+Nuovo Cimento 19: 154–164.
+
+\bibitem{kibble}
+T. W. B. Kibble,
+"Symmetry Breaking in Non-Abelian Gauge Theories",
+Phys. Rev. 155, 1554 (1967).
+
+\bibitem{csaki}
+Csaba Csaki,
+"TASI Lectures on Extra Dimensions and Branes",
+\eprint{hep-ph/0404096v1} (2004)
+
+
+\bibitem{ArkaniHamed:1998a}
+Nima Arkani-Hamed and Savas Dimopoulos and G. R. Dvali
+"The Hierarchy problem and new dimensions at a millimeter", 
+Phys.Lett. B429 (1998) 263–272, doi:10.1016/S0370-2693(98)00466-3,
+arXiv:hep-ph/9803315.
+
+\bibitem{Antoniadis:1998b}
+Antoniadis and N. Arkani-Hamed and S. Dimopoulos
+\emph{"New dimensions at a millimeter to a Fermi and superstrings at a TeV"}
+Phys. Lett.B 436 (1998), arXiv:hep-ph/9804398.
+
+\bibitem{UED}
+Thomas Appelquist, Hsin-Chia Cheng, Bogdan A. Dobrescu, 
+"Bounds on Universal Extra Dimensions",
+Phys.Rev.D64:035002,(2001),
+\eprint{hep-ph/0012100}
+
+
+\bibitem{Goldb}
+W. D. Goldberger and M. B. Wise 
+\emph{"Phenomenology of a Stabilized Modulus"}
+Physics Letters B, Volume 475, Issues 3-4, 2 March 2000, Pages 275-279, arXiv:hep-ph/9911457.
+
+\bibitem{lhc}
+Oliver S. Bruning, P. Collier, P. Lebrun, S. Myers, R. Ostojic, J. Poole, P. Proudlock,
+"LHC Design Report Vol.1: The LHC Main Ring", CERN-2004-003-V1 (2004).	
+
+\bibitem{HCAL}
+  CMS Collaboration,
+  \emph{"The Hadron Calorimeter Technical Design Report"},
+  CERN/LHCC   97-031 (1997). CMS TDR 2. 
+  
+\bibitem{HCAL2}  
+S. Abdullin et al., \emph{"Design, performance and calibration of the CMS forward calorimeter wedges"}, Eur.Phys.J. C53 (2008) 139–166.
+
+\bibitem{HCAL3}
+S. Abdullin et al., \emph{"Design, performance, and calibration of CMS hadron-barrel calorimeter wedges"}, Eur. Phys. J. C55 (2008) 159–171.
+
+\bibitem{HCAL4}
+S. Abdullin et al., \emph{"Design, performance, and calibration of the CMS Hadron- outer calorimeter"}, Eur. Phys. J. C57 (2008) 653–663.
+
+\bibitem{HCAL5}
+S. Abdullin et al., \emph{"Design, performance, and calibration of CMS hadron endcap calorimeters"}, Europan Journal of Physics C60
+(2009) 359–373.
+
+\bibitem{MUON}
+  CMS Collaboration,
+  \emph{"Muon Technical Design Report"},
+  CERN/LHC  97-32 (1997). CMS TDR 3.
+
+\bibitem{TRIGGER1}
+  CMS Collaboration,
+  \emph{"CMS The TriDAS Project : Technical Design Report, Volume 1: The Trigger Systems"}
+   CERN/LHCC-2000-38; CMS TDR 6.1 (2000),  
+   \url{https://cds.cern.ch/record/706847/files/cer-002248791.pdf}
+
+\bibitem{TRIGGER2}
+  CMS Collaboration,
+  \emph{"CMS The TriDAS Project : Technical Design Report, Volume 2: Data Acquisition and High-Level Trigger"}
+   CERN-LHCC-2002-026; CMS-TDR-6 (2002), 
+   \url{http://cds.cern.ch/record/578006/files/cer-2336481.pdf}
+   
+
+\bibitem{COMPUTING}
+  CMS Collaboration,
+  \emph{"The CMS Computing Model"}, Nuclear Physics B - Proceedings Supplements, Volume 172, October 2007, Pages 53-56.
+
+\bibitem{PF1}  
+CMS Collaboration,
+\emph{"Particle-Flow Event Reconstruction in CMS and
+Performance for Jets, Taus, and MET"}, CMS Physics Analysis Summary
+\textbf{PFT-09-001} (2009).
+
+\bibitem{PF2}
+CMS Collaboration,
+\emph{"Commissioning of the Particle-flow Event
+Reconstruction with the first LHC collisions recorded in the CMS detector"},
+CMS Physics Analysis Summary
+\textbf{PFT-10-001} (2010).
+
+\bibitem{PF3}
+CMS Collaboration,
+\emph{"Commissioning of the Particle-Flow Reconstruction in
+Minimum-Bias and Jet Events from pp Collisions at $\sqrt{s}$ = 7 TeV"},
+CMS Physics Analysis Summary
+\textbf{PFT-10-002} (2010),
+\url{https://cms-physics.web.cern.ch/cms-physics/public/PFT-10-002-pas.pdf}
+
+\bibitem{antikt}
+Matteo Cacciari, Gavin P. Salam, Gregory Soyez,
+\emph{"The anti-$k_{t}$ jet clustering algorithm"},
+JHEP 0804:063, (2008), \eprint{0802.1189}.
+
+\bibitem{fastjet}
+Matteo Cacciari, Gavin P. Salam, Gregory Soyez,
+\emph{"FastJet user manual"},
+The European Physical Journal C 72:1896, arXiv:1111.6097 [hep-ph].  
+
+\bibitem{jetcorrec}
+CMS Collaboration,
+\emph{"Plans for Jet Energy Corrections at CMS"},
+\textbf{CMS PAS JME-07-002}, (2008).
+
+\bibitem{pfjet}
+CMS Collaboration,
+\emph{"Particle Flow Jet Composition"},
+\textbf{CMS AN-2010/005} (2010).    
+
+\bibitem{pileupchs}
+CMS Collaboration,
+\emph{"Study of Pileup Removal Algorithms for Jets"},
+\textbf{CMS PAS JME-14-001} (2014),
+\url{https://cds.cern.ch/record/1751454/files/JME-14-001-pas.pdf}
+
+\bibitem{vtagging}
+CMS Collaboration,
+\emph{"V Tagging Observables and Correlations"},
+\textbf{CMS PAS JME-14-002} (2014)
+
+\bibitem{subjetiness}
+J. Thaler and K. Van Tilburg,
+\emph{"Maximizing Boosted Top Identification by Minimizing
+N-subjettiness"},
+JHEP 1202 (2012) 093, doi:10.1007/JHEP02(2012)093, arXiv:1108.2701.
+
+\bibitem{softdrop}
+A. J. Larkoski, S. Marzani, G. Soyez, and J. Thaler,
+\emph{"Soft Drop"},
+JHEP 1405 (2014) 146, doi:10.1007/JHEP05(2014)146, arXiv:1402.2657.
+
+\bibitem{pruning}
+Stephen D. Ellis, Christopher K. Vermilion, Jonathan R. Walsh
+\emph{"Recombination Algorithms and Jet Substructure: Pruning as a Tool for Heavy Particle Searches"},
+Phys.Rev.D81:094023,2010, arXiv:0912.0033 [hep-ph].
+
+\bibitem{CaloMET}
+CMS Collaboration,
+\emph{"Missing $E_{T}$ Performance in CMS"},
+CMS Physics Analysis Summary 
+\textbf{JME-07-001 (2007)}.
+
+\bibitem{TrackMET}
+CMS Collaboration,
+\emph{"Track-corrected Missing Transverse Energy in CMS"},
+CMS Physics Analysis Summary 
+\textbf{JME-09-010 (2009)}.
+
+\bibitem{FiltersMET}
+CMS Collaboration,
+\emph{"Performance of Missing Transverse Momentum
+Reconstruction Algorithms in Proton-Proton Collisions at $\sqrt{s}$ = 8 TeV with the CMS Detector"},
+CMS Physics Analysis Summary 
+\textbf{CMS-PAS-JME-12-002 } (2012).
+
+\bibitem{TypeIMET}
+CMS Collaboration,
+\emph{"$\met$ Performance in CMS"},
+CMS Analysis Note 
+\textbf{CMS AN-2007/041} (2007).
+
+\bibitem{PDG}   
+K.A. Olive et al.
+\emph{"Particle Data Group"},
+Chap 46, KINEMATICS,
+Chin. Phys. C, 38, 090001 (2014).
+
+\bibitem{pythia}
+T. Sjöstrand, S. Mrenna and P. Skands,
+\emph{"A Brief Introduction to PYTHIA 8.1"},
+Comput.Phys.Commun. 178, 852-867, (2008) 
+\eprint{0710.3820}
+
+\bibitem{madgraph}
+J. Alwall, R. Frederix, S. Frixione, V. Hirschi, F. Maltoni, O. Mattelaer, H.-S. Shao, T. Stelzer, P. Torrielli, M. Zaro,
+"The automated computation of tree-level and next-to-leading order differential cross sections, and their matching to parton shower simulations",
+JHEP07 079 (2014),
+\eprint{1405.0301v2}
+
+\bibitem{pat}
+W. Adam, V.Adler, B.Hegner, L.Lista, S.Lowette, P.Maksimovic, G. Petrucciani, S.Rappoccio, F.Ronga, R.Tenchini and R.Wolf,
+"PAT: The CMS Physics Analysis Toolkit",
+J. Phys.: Conf. Ser. 219 032017 doi:10.1088/1742-6596/219/3/032017,
+\url{http://iopscience.iop.org/1742-6596/219/3/032017/pdf/1742-6596_219_3_032017.pdf}
+
+\bibitem{jetid}
+JME POG (Jet MET Physics Object Group),
+\emph{"Jet Identification: Recommendations for 13TeV data analysis"},   
+\url{https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetID}   
+
+\bibitem{jetid2}
+CMS Collaboration,
+\emph{"Performance of the Particle-Flow jet identification criteria
+using proton-proton collisions at = 8 TeV"},
+\textbf{CMS AN-14-227} (2014)
+
+\bibitem{clean}
+CMS Collaboration,
+\emph{"PAT Cross Cleaning"},
+\url{https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePATCrossCleaning} 
+
+\bibitem{muonid}
+CMS Collaboration,
+\emph{"CMS Muon POG"},
+\url{https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId#Loose_Muon.}
+
+\bibitem{muonreco}
+CMS Collaboration,
+\emph{"Performance of CMS muon reconstruction in pp collision events at $\sqrt{s}$ = 7 TeV"},
+JINST 7 P10002 (2012),
+\eprint{1206.4071v2}
+
+\bibitem{electronreco}
+CMS Collaboration,
+"Performance of electron reconstruction and selection with the CMS detector in proton-proton collisions at $\sqrt{s}$= 8 TeV",
+JINST 10 P06005 (2015),
+\eprint{1502.02701v2}
+
+\bibitem{taureco}
+CMS Collaboration,
+"Performance of tau-lepton reconstruction and identification in CMS",
+JINST 7 P01001 (2012),
+\eprint{1109.6034}
+
+\bibitem{HLT}
+CMS Collaboration,
+\emph{"Instructions for trigger studies"},
+\url{https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideTriggerStudiesHowTo}
+
+\bibitem{Trimm} 
+David Krohn, Jesse Thaler, and Lian-Tao Wang, 
+\emph{"Jet Trimming"},
+JHEP 1002:084, (2010), 
+\eprint{0912.1342}
+
+\bibitem{Thiagopaper}
+CMS Collaboration,
+"Search for Randall-Sundrum Gravitons Decaying into
+a Jet plus Missing ET at CMS",
+CMS Physics Analysis Summary EXO-11-061(2012). \url{http://cdsweb.cern.ch/record/1426654}
+ 
+\bibitem{punzi}
+Giovanni Punzi   
+\emph{"Sensitivity of searches for new signals and its optimization"},
+\eprint{physics/0308063v2}
+
+\bibitem{abcd}
+CMS Collaboration,
+"Search for Physics Beyond the Standard Model in
+Opposite-sign Dilepton Events in pp Collisions at
+$\sqrt{s}$ = 7 TeV",
+\eprint{1103.1348}
+
+\bibitem{alfametod}
+CMS Collaboration,
+"Search for new diboson resonances in semileptonic and
+hadronic final states at $\sqrt{s}$ = 13 TeV",
+CMS AN-15-037 (2015) (Private document)
+
+
+
+    
+\end{thebibliography}
+
+
+
+
+
+
+
+\end{document}
