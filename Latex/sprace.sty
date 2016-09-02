@@ -1,0 +1,344 @@
+\ProvidesPackage{sprace}
+
+% Todos os pacotes úteis
+\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{bm}
+
+%\usepackage{cite} %Use cite ou natbib, mas não os dois.
+%\usepackage{color}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{mathrsfs} % Para script fonts.
+\usepackage{microtype}
+\usepackage[numbers]{natbib}
+\usepackage{subfig}
+\usepackage[textstyle,derived,squaren]{SIunits}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{slashed}
+\usepackage[nottoc]{tocbibind}
+\usepackage{tikz}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.text}
+\usepackage{verbatim}
+\usepackage{xspace}
+\usepackage[pdftex]{hyperref}
+\usepackage{cleveref}
+
+%%%%%%%
+% My colors
+\definecolor{babyblue}     {RGB}{177,234,241}
+\definecolor{navyblue}     {RGB}{41,0,131}
+\definecolor{starturquoise}{RGB}{0,153,213}
+\definecolor{strangeyellow}{RGB}{251,255,185}
+%\definecolor{SPRACEred}   {RBG}{206,94,96}
+%\definecolor{SPRACEblue}  {RBG}{104,130,150}
+%\definecolor{SPRACEgreen} {RBG}{132,193,163}
+%\definecolor{SPRACEyellow}{RBG}{204,198,170}
+%\definecolor{SPRACEgray}  {RBG}{229,229,229}
+%\definecolor{SPRACEblack} {RBG}{0,0,0}
+
+%%%%%%%
+% Masses
+%\newcommand{\gravitonmass}{\ensuremath{M_G}\xspace}
+\newcommand{\gtm}{\ensuremath{M_{T}^{G}}\xspace}
+\newcommand{\topmass}{\ensuremath{M_t}\xspace}
+\newcommand{\Zmass}{\ensuremath{M_Z}\xspace}
+\newcommand{\Wmass}{\ensuremath{M_W}\xspace}
+\newcommand{\jetmass}{\ensuremath{M_j}\xspace}
+\newcommand{\higgsmass}{\ensuremath{M_H}\xspace}
+\newcommand{\planckmass}{\ensuremath{M_{\textrm{Pl}}}\xspace}
+\newcommand{\electronmass}{\ensuremath{M_e}\xspace}
+\newcommand{\muonmass}{\ensuremath{M_\mu}\xspace}
+\newcommand{\taumass}{\ensuremath{M_\tau}\xspace}
+
+%%%%%%%
+% Goodies
+\newcommand{\alien}{\textit}
+\newcommand{\thank}{\textbf}
+\newcommand{\term}[1]{{\bf #1}}
+\newcommand{\technical}[1]{{\tt #1}}
+\newcommand{\scare}[1]{`#1'} 
+\newcommand{\code}[1]{{\tt #1}}
+\newcommand{\latin}[1]{{\it #1}}
+\newcommand{\itemname}[1]{{\bf #1}}
+\newcommand{\etal}{\latin{et al.}}
+\newcommand{\ie}{\latin{i.e.}}
+\newcommand{\eg}{\latin{e.g.}}
+\newcommand{\trigger}{\alien{trigger}}
+\newcommand\textsubscript[1]{\ensuremath{{}_{\text{#1}}}}
+\newcommand{\goesto}{\ensuremath{\rightarrow}}
+\newcommand{\lagrangean}{\mathscr{L}}
+\newcommand{\action}{\mathcal{S}}
+\newcommand{\actionFourD}{\action_{\textrm{4D}}}
+\newcommand{\actionFiveD}{\action_{\textrm{5D}}}
+\newcommand{\D}[1]{\ensuremath{\textrm{d} #1}}
+\newcommand{\dx}{\D{x}}
+\newcommand{\dy}{\D{y}}
+\newcommand{\dz}{\D{z}}
+\newcommand{\dr}{\D{r}}
+\newcommand{\dtheta}{\D{\theta}}
+\newcommand{\dphi}{\D{\phi}}
+\newcommand{\dt}{\D{t}}
+\newcommand{\ds}{\D{s}}
+\newcommand{\dd}[2]{\ensuremath{\frac{\mathrm{d} #1}{\mathrm{d} #2}}}
+\newcommand{\ddinline}[2]{\ensuremath{\mathrm{d} #1/\mathrm{d} #2}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\unitmatrix}{{\mathbb 1}}
+\newcommand{\alphaiso}{\alpha_{\textrm{iso}}\xspace}
+\newcommand{\protonproton}{pró\-ton-pró\-ton\xspace}
+\newcommand{\cincodim}{5-di\-men\-sio\-nal\xspace}
+\newcommand{\quatrodim}{4-di\-men\-sio\-nal\xspace}
+\newcommand{\irredutivel}{ir\-re\-du\-tí\-vel\xspace}
+\newcommand{\likelihood}{\ensuremath{L}\xspace}
+\newcommand{\Uone}{\ensuremath{\textrm{U}(1)}}
+\newcommand{\SUtwo}{\ensuremath{\textrm{SU}(2)}}
+\newcommand{\SUthree}{\ensuremath{\textrm{SU}(3)}}
+\newcommand{\SUfour}{\ensuremath{\textrm{SU}(4)}}
+\newcommand{\SUfive}{\ensuremath{\textrm{SU}(5)}}
+\newcommand{\bexp}{\ensuremath{B_{\textrm{exp}}}\xspace}
+\newcommand{\best}{\ensuremath{B_{\textrm{est}}}\xspace}
+\newcommand{\rhoMC}{\ensuremath{\rho_{\textrm{MC}}}\xspace}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\gvis}{\ensuremath{g_0}\xspace}
+\newcommand{\ghid}{\ensuremath{g_\pi}\xspace}
+%% Auto figuras
+ \sfcode`\.=1001
+ \sfcode`\?=1001
+ \sfcode`\!=1001
+ \sfcode`\:=1001    
+\newcommand{\figureref}[1]{\ifnum\spacefactor=1001 Figura~\ref{#1}\else Fig.~\ref{#1}\fi}
+\newcommand{\tableref}[1]{\ifnum\spacefactor=1001 Tabela~\ref{#1}\else Tab.~\ref{#1}\fi}
+\newcommand{\equationref}[1]{\ifnum\spacefactor=1001 Equação~\ref{#1}\else Eq.~\ref{#1}\fi}
+\newcommand{\fixmebegin}[1]{\textcolor{red}{\textbf{\Large FIXME BEGIN:{#1}\\}}}
+\newcommand{\fixmeend}{\textcolor{red}{\textbf{\Large FIXME END\\}}}
+\newcommand{\fixme}{\textcolor{red}{\textbf{\Large FIXME\\}}}
+\renewcommand{\descriptionlabel}[1]{\hspace{5\parsep}\ensuremath{\bullet}\hspace{\labelsep}\normalfont\bfseries#1}
+
+%% Compact description
+\newenvironment{compact_description}{
+  \begin{description}
+    \setlength{\itemsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\parskip}{0pt}
+  }{\end{description}}
+
+%% Compact itemize
+\newenvironment{compact_itemize}{
+  \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\parskip}{0pt}
+    }{\end{itemize}}
+
+
+%%%%%%%%%%%%%%%%%%%
+% Names and abbreviations
+\newcommand{\sprace} {\textsc{sprace}\xspace}
+\newcommand{\pythia} {\textsc{pythia}\xspace}
+\newcommand{\alpgen} {\textsc{alpgen}\xspace}
+\newcommand{\herwig} {\textsc{herwig}\xspace}
+\newcommand{\herwigpp} {\textsc{herwig++}\xspace}
+\newcommand{\madgraph} {\textsc{MadGraph}\xspace}
+\newcommand{\comphep} {\textsc{CompHEP}\xspace}
+\newcommand{\geant} {\textsc{geant4}\xspace}
+\newcommand{\geantthree} {\textsc{geant3}\xspace}
+\newcommand{\famos} {\textsc{famos}\xspace}
+\newcommand{\cteq} {\textsc{cteq6l1}\xspace}
+\newcommand{\hepmc} {\mbox{HepMC}\xspace}
+\newcommand{\lhe}{\textsc{lhe}\xspace}
+\newcommand{\hepml}{\mbox{HepML}\xspace}
+\newcommand{\mcdb}{\textsc{MCDB}\xspace}
+\newcommand{\ROOT}{\textsc{root}\xspace}
+\newcommand{\roofit}{\textsc{roofit}\xspace}
+\newcommand{\roostats}{\textsc{roostats}\xspace}
+\newcommand{\cmscollaboration}{Colaboração~CMS\xspace}
+\newcommand{\atlascollaboration}{Colaboração~ATLAS\xspace}
+\newcommand{\dzerocollaboration}{Colaboração~D\O\xspace}
+\newcommand{\cdfcollaboration}{Colaboração~CDF\xspace}
+\newcommand{\cmssw}{CMSSW~Framework\xspace}
+\newcommand{\edm}{EDM\xspace}
+\newcommand{\siscone}{\mbox{SISCone}\xspace}
+\newcommand{\kt}{\mbox{\ensuremath{k_{\mathrm{T}}}}\xspace}
+\newcommand{\antikt}{\mbox{anti-\ensuremath{k_{\mathrm{T}}}}\xspace}
+\newcommand{\susy}{\mbox{SUSY}\xspace}
+\newcommand{\ecal}{\mbox{ECAL}\xspace}
+\newcommand{\hcal}{\mbox{HCAL}\xspace}
+\newcommand{\brems}{\mbox{bremsstrahlung}\xspace}
+\newcommand{\kmpl}{\ensuremath{k/\planckmass}\xspace}
+\newcommand{\eprint}[1]{\href{http://arxiv.org/abs/#1}{arXiv:#1}} 
+
+%%%%%%%
+% Lengths
+\newcommand{\km}{\kilo\metre}
+\newcommand{\cm}{\centi\metre}
+\newcommand{\mm}{\milli\metre}
+\newcommand{\mum}{\micro\metre}
+
+%%%%%%%%%%%%%%%%%
+% Energy and kinematics
+\newcommand{\ptrans}{\ensuremath{p_{\mathrm{T}}}\xspace}
+\newcommand{\etrans}{\ensuremath{p_{\mathrm{T}}}\xspace}
+\newcommand{\met}{\ensuremath{E_{\mathrm{T}}\hspace{-1.1em}/\kern0.45em}\xspace}
+%\newcommand{\met}{\ensuremath{\slashed{E_{\mathrm{T}}}}}
+%\newcommand{\met}{\ensuremath{\not \hspace{-0.4em} E_{\mathrm{T}}}}
+%\newcommand{\met}{\mbox{$E_{\small\mbox{T}}^{\small\mbox{miss}}$}}
+\newcommand{\vecmet}{\ensuremath{\overrightarrow{\met}}\xspace}
+\newcommand{\modeta}{\ensuremath{\vert\eta\vert}\xspace}
+\newcommand{\kev}{\kilo\electronvolt}
+\newcommand{\mev}{\mega\electronvolt}
+\newcommand{\gev}{\giga\electronvolt}
+\newcommand{\tev}{\tera\electronvolt}
+\newcommand{\njets}{\ensuremath{N_{\mathrm{jets}}}\xspace}
+
+%%%%%%%%%
+% Luminosity
+\newcommand{\invpicobarn}{\reciprocal{\pico\barn}\xspace}
+\newcommand{\invfemtobarn}{\reciprocal{\femto\barn}\xspace}
+\newcommand{\hundredpb}{\unit{100}{\reciprocal{\pico\barn}}\xspace}
+\newcommand{\threehundredpb}{\unit{300}{\reciprocal{\pico\barn}}\xspace}
+\newcommand{\onefb}{\unit{1}{\reciprocal{\femto\barn}}\xspace}
+\newcommand{\twofb}{\unit{2}{\reciprocal{\femto\barn}}\xspace}
+\newcommand{\fivefb}{\unit{5}{\reciprocal{\femto\barn}}\xspace}
+\newcommand{\tenfb}{\unit{10}{\reciprocal{\femto\barn}}\xspace}
+\newcommand{\tenpb}{\unit{10}{\reciprocal{\pico\barn}}\xspace}
+\newcommand{\totalIntegratedLumi}{\unit{4,7}{\reciprocal{\femto\barn}}\xspace}
+\newcommand{\lumi}{\ensuremath{\mathcal{L}}}
+\newcommand{\lumiunit}{\rpsquare{\centi\metre}{\reciprocal\second}\xspace}
+\newcommand{\designlumi}{\unit{\power{10}{34}}{\lumiunit}\xspace}
+
+%%% Adaptei
+%\newcommand{\pbinv} {\mbox{\ensuremath{\,\text{pb}^\text{$-$1}}}\xspace}
+%\newcommand{\fbinv} {\mbox{\ensuremath{\,\text{fb}^\text{$-$1}}}\xspace}
+%\newcommand{\nbinv} {\mbox{\ensuremath{\,\text{nb}^\text{$-$1}}}\xspace}
+%\newcommand{\percms}{\ensuremath{\,\text{cm}^\text{$-$2}\,\text{s}^\text{$-$1}}\xspace}
+%\newcommand{\lumi}{\ensuremath{\mathcal{L}}\xspace}
+%\newcommand{\Lumi}{\ensuremath{\mathcal{L}}\xspace}%both upper and lower
+\newcommand{\pbinv}{\invpicobarn}
+\newcommand{\fbinv}{\invfemtobarn}
+\newcommand{\percms}{\lumiunit}
+
+%%%%%%%
+% Particles
+%% This is actually rather complicated I think...
+\newcommand{\cmsSymbolFace}{\mathrm}
+%% Shamelessly copied
+\newcommand{\cPgn}{\ensuremath{\nu}\xspace} % generic neutrino
+\newcommand{\cPagn}{\ensuremath{\overline{\nu}}\xspace} % generic anti-neutrino
+\newcommand{\cPgg}{\ensuremath{\gamma}\xspace} % gamma
+\newcommand{\Pgpz}{\ensuremath{\pi^{0}}}
+\newcommand{\cPJgy}{\ensuremath{\cmsSymbolFace{J}\hspace{-.08em}/\hspace{-.14em}\psi}} % J/Psi (no mass)
+\newcommand{\cPZ}{\ensuremath{\cmsSymbolFace{Z}}\xspace} % plain Z (no superscript 0)
+\newcommand{\cPW}{\ensuremath{\cmsSymbolFace{W}}\xspace} % plain W (no superscript sign)
+\newcommand{\cPH}{\ensuremath{\cmsSymbolFace{H}}\xspace} % plain W (no superscript sign)
+\newcommand{\cPZpr}{\ensuremath{\cmsSymbolFace{Z}^\prime}\xspace} % plain Z'
+\newcommand{\cPqt}{\ensuremath{\cmsSymbolFace{t}}\xspace} % t for t quark
+\newcommand{\cPqb}{\ensuremath{\cmsSymbolFace{b}}\xspace} % b for b quark
+\newcommand{\cPqc}{\ensuremath{\cmsSymbolFace{c}}\xspace} % c for c quark
+\newcommand{\cPqs}{\ensuremath{\cmsSymbolFace{s}}\xspace} % s for s quark
+\newcommand{\cPqu}{\ensuremath{\cmsSymbolFace{u}}\xspace} % u for u quark
+\newcommand{\cPqd}{\ensuremath{\cmsSymbolFace{d}}\xspace} % d for d quark
+\newcommand{\cPq}{\ensuremath{\cmsSymbolFace{q}}\xspace} % generic quark
+\newcommand{\cPQ}{\ensuremath{\cmsSymbolFace{q}}\xspace} % generic heavy quark
+\newcommand{\cPg}{\ensuremath{\cmsSymbolFace{g}}\xspace} % generic gluon
+\newcommand{\cPp}{\ensuremath{\cmsSymbolFace{p}}\xspace} % generic proton
+\newcommand{\cPG}{\ensuremath{\cmsSymbolFace{G}}\xspace} % Graviton
+\newcommand{\cPaqt}{\ensuremath{\overline{\cmsSymbolFace{t}}}\xspace} % t for t anti-quark
+\newcommand{\cPaqb}{\ensuremath{\overline{\cmsSymbolFace{b}}}\xspace} % b for b anti-quark
+\newcommand{\cPaqc}{\ensuremath{\overline{\cmsSymbolFace{c}}}\xspace} % c for c anti-quark
+\newcommand{\cPaqs}{\ensuremath{\overline{\cmsSymbolFace{s}}}\xspace} % s for s anti-quark
+\newcommand{\cPaqu}{\ensuremath{\overline{\cmsSymbolFace{u}}}\xspace} % u for u anti-quark
+\newcommand{\cPaqd}{\ensuremath{\overline{\cmsSymbolFace{d}}}\xspace} % d for d anti-quark
+\newcommand{\cPaq}{\ensuremath{\overline{\cmsSymbolFace{q}}}\xspace} % generic anti-quark
+\newcommand{\cPaQ}{\ensuremath{\overline{\cmsSymbolFace{Q}}}\xspace} % generic anti-heavy-quark
+\newcommand{\cPap}{\ensuremath{\overline{\cmsSymbolFace{p}}}\xspace} % generic anti-proton
+%% Electrons
+\newcommand{\Pem}{\ensuremath{\mathrm{e}^-}\xspace}
+\newcommand{\Pep}{\ensuremath{\mathrm{e}^+}\xspace}
+\newcommand{\Pe}{\ensuremath{\mathrm{e}}\xspace}
+%% Muons
+\newcommand{\Pgmm}{\ensuremath{{\mu^-}}\xspace}
+\newcommand{\Pgmp}{\ensuremath{{\mu^+}}\xspace}
+\newcommand{\Pgm}{\ensuremath{{\mu}}\xspace}
+%% Tau
+\newcommand{\Pgt}{\ensuremath{\tau}\xspace}
+\newcommand{\Pgtp}{\ensuremath{\tau^+}\xspace}
+\newcommand{\Pgtm}{\ensuremath{\tau^-}\xspace}
+% Others
+\newcommand{\JPsi}{\ensuremath{\cmsSymbolFace{J}\hspace{-.08em}/\hspace{-.14em}\psi}\xspace}
+\newcommand{\PgOm}{\ensuremath{\Omega^-}}
+
+%% Particle pairs
+\newcommand{\ppbar}{\ensuremath{\cPp\cPap}\xspace}
+\newcommand{\ttbar}{\ensuremath{\cPqt\cPaqt}\xspace}
+\newcommand{\bbbar}{\ensuremath{\cPqb\cPaqb}\xspace}
+\newcommand{\ccbar}{\ensuremath{\cPqc\cPaqc}\xspace}
+\newcommand{\qqbar}{\ensuremath{\cPq\cPaq}\xspace}
+\newcommand{\QQbar}{\ensuremath{\cPQ\cPaQ}\xspace}
+\newcommand{\nunubar}{\ensuremath{\cPgn} \cPagn\xspace}
+\newcommand{\qqprime}{\ensuremath{\cPq\cPq^{\prime}}\xspace}
+\newcommand{\epem}{\ensuremath{\Pep\Pem}\xspace}
+\newcommand{\mupmum}{\ensuremath{\Pgmp\Pgmm}\xspace}
+\newcommand{\tauptaum}{\ensuremath{\Pgtp\Pgtm}\xspace}
+
+%% Other particles
+\newcommand{\RSG}{\ensuremath{\cmsSymbolFace{G}^*}\xspace} % RS Graviton
+\newcommand{\lepton}{\ensuremath{\ell}\xspace}
+\newcommand{\llbar}{\ensuremath{\lepton\overline{\lepton}}\xspace}
+\newcommand{\lplm}{\ensuremath{\lepton^+\lepton^-\xspace}}
+
+% Índice ao invés de Sumário
+%\addto\captionsbrazil{%
+%  \renewcommand{\contentsname}%
+%    {Índice}%
+%}
+% Bibliografia ao invés de Referências Bibliográficas
+%\addto\captionsbrazil{%
+%  \renewcommand{\bibname}%
+%    {Referências}%
+%}
+
+% Código para checar fontes matemáticas
+\newcommand{\PrintMathFonts}{%
+  \typeout{*** Math fonts list ***}
+  \count255=0
+  \loop\ifnum\count255<16
+    \typeout{(\the\count255: \the\textfont\count255 = \fontname\textfont\count255)}
+    \advance\count255 by 1
+  \repeat
+  \typeout{***}}
+  
+% Código para checar widows and orphans
+\clubpenalty=152
+\widowpenalty=151
+
+\makeatletter
+  \def\oncol{\if@twocolumn \space \if@firstcolumn  (first \else (second \fi column)\fi}
+\makeatletter
+
+\def\testforwidowsandorphans{%
+   \ifnum\outputpenalty=151
+        \typeout{*** Widow on page  \thepage \oncol}%
+  \else
+       \ifnum\outputpenalty=152
+          \typeout{*** Orphan on page \thepage \oncol}%
+      \else
+         \ifnum\outputpenalty=303
+            \typeout{*** Orphan and Widow on page \thepage \oncol}%
+        \fi
+      \fi
+ \fi
+}
+
+\toks0=\output
+\output\expandafter{\expandafter\testforwidowsandorphans
+                                   \the\toks0}
+

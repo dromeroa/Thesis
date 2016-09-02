@@ -1,8 +1,6 @@
 \documentclass[a4paper,12pt,oneside]{report}
 %\usepackage[Glenn]{fncychap}
 \usepackage[Lenny]{fncychap}
-% Escrever em Português
-%\usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{float}
@@ -112,13 +110,15 @@
 %\input Preambulo.tex
 \input TitlePage.tex
 
-\input blanco.tex
+
+
+%\input blanco.tex
 
 \pagenumbering{roman}
 
 \input abstract.tex
 
-\input blanco2.tex
+%\input blanco2.tex
 
 %%% The Table of Contents and a new page
 \tableofcontents
@@ -135,12 +135,12 @@
 \input Introduction.tex
 
 
-\input cap1.tex
+\input{Chapter1/cap1.tex}
 
 
-\input CMS.tex
+\input{Chapter2/CMS.tex}
 
-
+\begin{comment}
 \input PhysicsObjects.tex
 \input Analysis.tex
 \input Conclusions.tex
@@ -503,7 +503,7 @@ CMS AN-15-037 (2015) (Private document)
     
 \end{thebibliography}
 
-
+\end{comment}
 
 
 
