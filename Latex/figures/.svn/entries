@@ -1,0 +1,55 @@
+10
+
+dir
+339491
+svn+ssh://svn.cern.ch/reps/tdr2/notes/AN-15-220/trunk/figures
+svn+ssh://svn.cern.ch/reps/tdr2
+
+
+
+2015-10-19T00:07:00.945767Z
+306061
+caber
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4525493e-7705-40b1-a816-d608a930855b
+
+fitplotsLPMT
+dir
+
+limits
+dir
+
+fitplotsHPMj
+dir
+
+fitplotsLPMj
+dir
+
+nopurity
+dir
+
+highpurity
+dir
+
+fitplotsHPMT
+dir
+
+signal
+dir
+
+lowpurity
+dir
+
