@@ -3,21 +3,24 @@
 % Todos os pacotes úteis
 \usepackage{amsmath}
 %\usepackage{amsfonts}
-%\usepackage{amssymb}
+\usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{bm}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[toc,page]{appendix}
+\usepackage{cite}
+ %Use cite ou natbib, mas não os dois.
 
-%\usepackage{cite} %Use cite ou natbib, mas não os dois.
 %\usepackage{color}
 \usepackage[usenames, dvipsnames]{color}
 \usepackage{graphicx}
 \usepackage{indentfirst}
 \usepackage{mathrsfs} % Para script fonts.
 \usepackage{microtype}
-\usepackage[numbers]{natbib}
+%\usepackage[numbers]{natbib}
 \usepackage{subfig}
 \usepackage[textstyle,derived,squaren]{SIunits}
-\usepackage{url}
 \usepackage{setspace}
 \usepackage{slashed}
 \usepackage[nottoc]{tocbibind}
@@ -29,8 +32,11 @@
 \usetikzlibrary{decorations.text}
 \usepackage{verbatim}
 \usepackage{xspace}
-\usepackage[pdftex]{hyperref}
+%\usepackage[pdftex]{hyperref}
 \usepackage{cleveref}
+
+% % No indent in the paragraph
+\usepackage{parskip}
 
 %%%%%%%
 % My colors
@@ -143,13 +149,15 @@
 %%%%%%%%%%%%%%%%%%%
 % Names and abbreviations
 \newcommand{\sprace} {\textsc{sprace}\xspace}
-\newcommand{\pythia} {\textsc{pythia}\xspace}
+\newcommand{\AMCATNLO}{\textsc{aMC@NLO}\xspace}
+\newcommand{\MCATNLO}{\textsc{MC@NLO}\xspace}
+\newcommand{\PYTHIA} {\textsc{Pythia}\xspace}
 \newcommand{\alpgen} {\textsc{alpgen}\xspace}
 \newcommand{\herwig} {\textsc{herwig}\xspace}
 \newcommand{\herwigpp} {\textsc{herwig++}\xspace}
-\newcommand{\madgraph} {\textsc{MadGraph}\xspace}
+\newcommand{\MADGRAPH} {\textsc{MadGraph}\xspace}
 \newcommand{\comphep} {\textsc{CompHEP}\xspace}
-\newcommand{\geant} {\textsc{geant4}\xspace}
+\newcommand{\GEANTfour} {\textsc{GEANT4}\xspace}
 \newcommand{\geantthree} {\textsc{geant3}\xspace}
 \newcommand{\famos} {\textsc{famos}\xspace}
 \newcommand{\cteq} {\textsc{cteq6l1}\xspace}
@@ -186,17 +194,25 @@
 %%%%%%%%%%%%%%%%%
 % Energy and kinematics
 \newcommand{\ptrans}{\ensuremath{p_{\mathrm{T}}}\xspace}
+\newcommand{\pt}{\ensuremath{p_{\mathrm{T}}}\xspace}
 \newcommand{\etrans}{\ensuremath{p_{\mathrm{T}}}\xspace}
+%\newcommand{\MET}{\ensuremath{E_{\mathrm{T}}\hspace{-1.1em}/\kern0.45em}\xspace}
 \newcommand{\met}{\ensuremath{E_{\mathrm{T}}\hspace{-1.1em}/\kern0.45em}\xspace}
 %\newcommand{\met}{\ensuremath{\slashed{E_{\mathrm{T}}}}}
 %\newcommand{\met}{\ensuremath{\not \hspace{-0.4em} E_{\mathrm{T}}}}
-%\newcommand{\met}{\mbox{$E_{\small\mbox{T}}^{\small\mbox{miss}}$}}
+%\newcommand{\MET}{\mbox{$E_{\small\mbox{T}}^{\small\mbox{miss}}$}}
+
+\newcommand{\ET}{\ensuremath{E_{\mathrm{T}}}\xspace}
+\newcommand{\MET}{\ensuremath{E_{\mathrm{T}}^{\text{miss}}}\xspace}
+
+\newcommand{\HT}{\ensuremath{H_{\mathrm{T}}}\xspace}
 \newcommand{\vecmet}{\ensuremath{\overrightarrow{\met}}\xspace}
 \newcommand{\modeta}{\ensuremath{\vert\eta\vert}\xspace}
 \newcommand{\kev}{\kilo\electronvolt}
 \newcommand{\mev}{\mega\electronvolt}
 \newcommand{\gev}{\giga\electronvolt}
 \newcommand{\tev}{\tera\electronvolt}
+\newcommand{\GeV}{\ensuremath{\,\text{Ge\hspace{-.08em}V}}\xspace}
 \newcommand{\njets}{\ensuremath{N_{\mathrm{jets}}}\xspace}
 
 %%%%%%%%%
@@ -294,6 +310,9 @@
 \newcommand{\lepton}{\ensuremath{\ell}\xspace}
 \newcommand{\llbar}{\ensuremath{\lepton\overline{\lepton}}\xspace}
 \newcommand{\lplm}{\ensuremath{\lepton^+\lepton^-\xspace}}
+
+% % others
+\newcommand{\ga}{\ensuremath{\gtrsim}}
 
 % Índice ao invés de Sumário
 %\addto\captionsbrazil{%
